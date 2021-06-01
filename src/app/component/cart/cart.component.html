@@ -1,0 +1,49 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 mt-5">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col"><p>Product Image</p></th>
+                    <th scope="col"><p>Price</p></th>
+                    <th scope="col"><p>Quantity</p></th>
+                    <th scope="col"><p>Sub total</p></th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>              
+                  <tr *ngFor="let cartList of cartLists">
+                    <td><img src="{{cartList.image}}" style="width: 50px;" alt="shopping"></td>
+                    <td> <p>{{cartList.price}}</p></td>
+                    <td>  
+                        <div class="row justify-content-start">
+                            <div class="col-sm-2">
+                                <button class="btn btn-primary" (click)="inc(cartList.id, cartList.qnt)">
+                                    <i aria-hidden="true" class="fa fa-plus"></i>
+                                </button>
+                            </div>
+                            <div class="col-sm-2">
+                                <p class="card-text text-center">
+                                    <strong>{{cartList.qnt}}</strong>
+                                </p>
+                            </div>
+                            <div class="col-sm-2">
+                                <button class="btn btn-primary"  (click)="dec(cartList.id, cartList.qnt)">
+                                <i aria-hidden="true" class="fa fa-minus"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </td>
+                    <td>{{cartList.price * cartList.qnt}}</td>
+                    <td><i class="fa fa-trash" aria-hidden="true" (click)="delete(cartList.id)"></i></td>
+                  </tr>
+                  <tr>
+                      <td colspan="4"><p>Total amound:- Rs {{ totalamd }}</p></td>
+                      <td><a href="javascript:void(0)" (click)=clearAll()>Clear All</a></td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
