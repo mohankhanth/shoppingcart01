@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product';
 import { ProductsService } from 'src/app/services/products.service';
 
@@ -13,11 +14,16 @@ export class CartComponent implements OnInit {
   localLength01:number = 0;
   totalamd:number;
 
-  constructor( private service:ProductsService) { }
+  constructor( private service:ProductsService,
+               private router:Router) { }
 
   ngOnInit(): void {
     this.getCartlist();
     this.totalAmound();
+  }
+
+  backtohome(){
+    this.router.navigate(['/']);
   }
 
   getCartlist() {
